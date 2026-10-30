@@ -1,0 +1,361 @@
+:root {
+  color-scheme: light;
+  --page-bg: linear-gradient(
+    to bottom,
+    #fffeea 0%,
+    #ffdeea 60%,
+    #ffc2d7 100%
+  );
+  --board-border: #e9e9e9;
+  --board-radius: 8px;
+  --board-gap: 3vw;
+  --side-space: 9vw;
+  
+
+  --accent:#ffc2d7;
+  --bg:#ffdeea;
+  --text: #1d1d1f;
+  --muted: #86868b;
+
+  --glass: rgba(255, 255, 255, 0.76);
+  --glass-border: rgba(255, 255, 255, 0.85);
+
+  --bar-height: 66px;
+  --tab-width: 58px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--page-bg);
+}
+
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.carousel-viewport {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 60svh;
+  padding-inline: var(--side-space);
+  overscroll-behavior: none;
+  touch-action: none;
+  cursor: grab;
+}
+
+.carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.carousel-track {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--board-gap);
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.section {
+  height: 20svh; 
+}
+
+.content {
+  justify-content: center; /* Horizontal center */
+  align-items: center; 
+  text-align: center;
+}
+
+.board {
+  flex: 0 0 80vw;
+  width: 80vw;
+  object-fit: cover;
+  height: min(60vh);
+  min-height: 320px;
+  border: 1px solid var(--board-border);
+  border-radius: var(--board-radius);
+  box-shadow:
+    0 2px 5px rgb(0 0 0 / 2%),
+    0 18px 48px rgb(0 0 0 / 4%);
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --board-gap: 5vw;
+    --side-space: 12vw;
+  }
+
+  .board {
+    flex-basis: 76vw;
+    width: 76vw;
+    min-height: 280px;
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    will-change: auto;
+  }
+}
+
+
+
+
+
+/* =========================
+   FLOATING BAR
+========================= */
+
+.floating-bar {
+  position: fixed;
+  z-index: 100;
+
+  left: 50%;
+  bottom: 32px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  height: var(--bar-height);
+  padding: 6px;
+
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+
+  background: var(--glass);
+
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.07),
+    0 2px 8px rgba(0, 0, 0, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  transform: translateX(-50%);
+  transition:
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+
+  will-change: width;
+}
+
+.floating-bar:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.09),
+    0 3px 10px rgba(0, 0, 0, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================
+   TABS CONTAINER
+========================= */
+
+.tabs {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  height: 100%;
+}
+
+
+/* =========================
+   TAB BUTTONS
+========================= */
+
+.tab {
+  position: relative;
+  z-index: 2;
+
+  width: var(--tab-width);
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 100px;
+
+  background: transparent;
+  color: #77777d;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    color 0.3s ease,
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab svg {
+  width: 21px;
+  height: 21px;
+
+  flex-shrink: 0;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab:hover svg {
+  transform: scale(1.1);
+}
+
+.tab.active {
+  color: #ffffff;
+}
+
+.tab {
+  transition: color 180ms ease;
+}
+
+.tab svg {
+  position: relative;
+  z-index: 1;
+}
+
+.tab-label {
+  z-index: 3;
+}
+
+.tab:focus-visible,
+.toggle-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+/* =========================
+   SLIDING INDICATOR
+========================= */
+
+#active-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  height: 52px;
+  width: 58px;
+
+  border-radius: 999px;
+  background: #1d1d1f;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  pointer-events: none;
+  z-index: 0;
+
+  transform-origin: center center;
+  will-change: transform, width, height;
+
+  /* The liquid filter is installed by JavaScript. */
+  filter: url("#liquid-goo");
+}
+
+
+/* =========================
+   HOVER LABEL
+========================= */
+
+.tab-label {
+  position: absolute;
+
+  left: 50%;
+  bottom: calc(100% + 17px);
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  color: #29292e;
+
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translate(-50%, 5px) scale(1);
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.2s;
+}
+
+.tab:hover .tab-label,
+.tab:focus-visible .tab-label {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
