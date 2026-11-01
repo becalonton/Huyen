@@ -2,54 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fffbea">
-  <title>Infinite Portfolio Carousel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffc2d7">
+  <title>Becalonton</title>
+
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://media.licdn.com/dms/image/v2/D5603AQH3bxQQ0_TaOg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1700481955678?e=1795046400&v=beta&t=I_5uQeRVPTi6ICoIs-CnXjh70twsMiELQW5PEv0mUCM">
+
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script type="module" src="./script.js"></script>
 </head>
 <body>
   <main class="page">
-    <header class="intro">
+
+
+<header class="intro">
       <p class="eyebrow"></p>
       <h1>Becalonton.</h1>
-      <p class="intro-copy">Scroll, drag, or use the arrows to explore.</p>
-    </header>
+      <p class="intro-copy"></p>
+</header>
 
     <section class="carousel" aria-label="Featured projects">
+
+      <div class="carousel-tabs"
+     role="tablist"
+     aria-label="Project category"
+     data-active="work">
+
+  <span class="carousel-tabs-indicator"
+        aria-hidden="true"></span>
+
+  <button class="carousel-tab is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          data-category="work">
+    Work
+  </button>
+
+  <button class="carousel-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          data-category="free-time">
+    Free time
+</button>
+</div>
+
+
       <div class="carousel-viewport" id="carousel-viewport">
-        <button class="board" type="button" data-index="0" aria-label="View digital banking project">
+        <button class="board" data-category="work" type="button" data-index="0" aria-label="View digital banking project">
           <div class="board-surface">
-            <img class="board-image" alt="" src="https://mir-s3-cdn-cf.behance.net/5b86da764c246c9f237afb80a16f920e/8982578b-8d50-4563-a80b-a382d8070f12_rwc_-2x2008x2710x500x2711.jpg?h=5bfe18f478637ea9cf6d121e0c2b1f06">
+            <img class="board-image" alt="" src="https://kenh14cdn.com/zoom/700_438/pr/2024/photo1718879530128-17188795303021432804385-63854523202416.jpg">
             <div class="board-shade"></div>
             <div class="board-content">
             </div>
-            <span class="board-bottom"><span>Explore the work</span><span class="round-arrow">↗</span></span>
+            <span class="board-bottom"><span class="explore-chip">UI/UX evaluate</span>
+            <span class="explore-chip">Retail Banking</span>
+            <span class="explore-chip">8 months</span>
+            <span class="round-arrow">↗</span></span>
           </div>
         </button>
 
-        <button class="board" type="button" data-index="1" aria-label="View research and strategy project">
+        <button class="board" data-category="work" type="button" data-index="1" aria-label="View research and strategy project">
           <div class="board-surface">
-            <img class="board-image" alt="" src="https://as1.ftcdn.net/v2/jpg/15/25/21/46/1000_F_1525214651_g3LaPU4o97xqP71X9qJE4zGXYqm5Uw6p.jpg">
+            <img class="board-image" alt="" src="https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Tin-tuc/2025/Vietcombank/Vietcombank_202511/Vietcombank_20251121/Screenshot-2025-11-19-at-151202.png?ts=20251121105545">
             <div class="board-shade"></div>
             <div class="board-content">
             </div>
-            <span class="board-bottom"><span>Explore the work</span><span class="round-arrow">↗</span></span>
+            <span class="board-bottom"><span class="explore-chip">UI/UX evaluate</span>
+            <span class="explore-chip">Coporate Banking</span>
+            <span class="explore-chip">8 months</span>
+            <span class="round-arrow">↗</span></span>
           </div>
         </button>
 
-        <button class="board" type="button" data-index="2" aria-label="View design systems project">
+        <button class="board" data-category="free-time" type="button" data-index="2" aria-label="View design systems project">
           <div class="board-surface">
-            <img class="board-image" alt="" src="https://as1.ftcdn.net/v2/jpg/15/25/21/46/1000_F_1525214651_g3LaPU4o97xqP71X9qJE4zGXYqm5Uw6p.jpg">
+            <img class="board-image" alt="" src="https://play-lh.googleusercontent.com/UnrIMZifZoslVQ09bP55g0Q7cdj8ta9tJGFroNhz0c3J4IZzjLJqGAI0qnCtUb6CTWcmNgP6yXCh7-8moL_V=w526-h296-rw">
             <div class="board-shade"></div>
             <div class="board-content">
-       
-             
             </div>
-            <span class="board-bottom"><span>Explore the work</span><span class="round-arrow">↗</span></span>
+            <span class="board-bottom"><span class="explore-chip">Product Design</span>
+            <span class="explore-chip">Mobile App</span>
+            <span class="explore-chip">Payment</span>
+            <span class="round-arrow">↗</span></span>
           </div>
         </button>
+
+        <button class="board" data-category="work" type="button" data-index="2" aria-label="View design systems project">
+          <div class="board-surface">
+            <img class="board-image" alt="" src="https://pbs.twimg.com/media/F1JwaTVacAEQ5iV.jpg">
+            <div class="board-shade"></div>
+            <div class="board-content">
+            </div>
+            <span class="explore-chip">UI Design</span>
+            <span class="explore-chip">Data analystics</span>
+            <span class="round-arrow">↗</span></span>
+          </div>
+        </button>
+
+    
       </div>
 <!--
       <nav class="carousel-controls" aria-label="Carousel controls">
@@ -63,8 +116,19 @@
       </nav>-->
     </section>
 
-    <footer class="hint">CONTACT | LINKEDIN | RESUME</footer>
+    <footer>
+  <nav class="footer-links">
+    <a href="mailto:hello@example.com">Contact</a>
+    <span>·</span>
+    <a href="YOUR_LINKEDIN_URL">LinkedIn</a>
+    <span>·</span>
+    <a href="YOUR_RESUME_URL">Resume</a>
+  </nav>
+
+  <p class="footer-copyright">
+    © 2026 Becalonton. All rights reserved.
+  </p>
+    </footer>
   </main>
-  <script type="module" src="./script.js"></script>
 </body>
 </html>
